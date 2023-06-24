@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 3,
+      "firstname": "samarth",
+      "lastname": "mali",
+      "email": "sam@gmail.com",
+      "mobile": "9876543120",
+      "salary": "189"
+    },
+    {
+      "id": 4,
+      "firstname": "mayur",
+      "lastname": "bhavsar",
+      "email": "mayur@gmail.com",
+      "mobile": "9876543124",
+      "salary": "190"
+    },
+    {
+      "id": 5,
+      "firstname": "Sahil",
+      "lastname": "Yadav",
+      "email": "sahil@gmail.com",
+      "mobile": "9876543145",
+      "salary": "190"
+    },
+    {
+      "id": 8,
+      "firstname": "harshad",
+      "lastname": "mystry",
+      "email": "harshad@gmail.com",
+      "mobile": "9876543210",
+      "salary": "1091"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
