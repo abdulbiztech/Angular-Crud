@@ -3,13 +3,8 @@
   <div class="container-fluid">
     <h1 style="color: aliceblue">Angular Crud</h1>
     <div class="d-flex">
-      <button
-        class="btn btn-success"
-        type="button"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-        (click)="clickAddEmployee()"
-      >
+      <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        (click)="clickAddEmployee()">
         Add Employee
       </button>
     </div>
@@ -37,7 +32,8 @@
       <td>{{item.mobile}}</td>
       <td>{{item.salary}}</td>
       <td>
-        <button class="btn btn-info" (click)="editEmployee(item)" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+        <button class="btn btn-info" (click)="editEmployee(item)" type="button" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Edit</button>
         <button class="btn btn-danger mx-3" (click)="deleteEmployee(item.id)">Delete</button>
       </td>
     </tr>
@@ -45,75 +41,34 @@
 </table>
 
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Employee Detail</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="FormValue" >
+        <form [formGroup]="FormValue">
           <div class="mb-3">
-            <label class="form-label"
-              >Firstname</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              formControlName="firstname"
-            />
+            <label class="form-label">Firstname</label>
+            <input type="text" class="form-control" formControlName="firstname" />
           </div>
           <div class="mb-3">
-            <label class="form-label"
-              >Lastname</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              formControlName="lastname"
-            />
+            <label class="form-label">Lastname</label>
+            <input type="text" class="form-control" formControlName="lastname" />
           </div>
           <div class="mb-3">
-            <label class="form-label"
-              >Email</label
-            >
-            <input
-              type="email"
-              class="form-control"
-              formControlName="email"
-            />
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email" />
           </div>
           <div class="mb-3">
-            <label class="form-label"
-              >Mobile</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              formControlName="mobile"
-            />
+            <label class="form-label">Mobile</label>
+            <input type="text" class="form-control" formControlName="mobile" />
           </div>
           <div class="mb-3">
-            <label class="form-label"
-              >Salary</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              formControlName="salary"
-            />
+            <label class="form-label">Salary</label>
+            <input type="text" class="form-control" formControlName="salary" />
           </div>
         </form>
       </div>
@@ -122,7 +77,8 @@
           Close
         </button>
         <button type="button" *ngIf="showAdd" (click)="postEmployee()" class="btn btn-primary">Add Employee</button>
-        <button type="button" *ngIf="showUpdate" (click)="updateEmployee()" class="btn btn-primary">Update Employee</button>
+        <button type="button" *ngIf="showUpdate" (click)="updateEmployee()" class="btn btn-primary">Update
+          Employee</button>
       </div>
     </div>
   </div>

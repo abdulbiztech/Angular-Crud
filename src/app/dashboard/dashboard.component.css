@@ -1,0 +1,21 @@
+.profile-button {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16px;
+}
+
+.main-box {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-content: flex-start;
+    align-items: stretch;
+    /* Add the default opacity and transition for smooth appearance */
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+}
+
+.card-description {
+    margin-top: 20px;
+}

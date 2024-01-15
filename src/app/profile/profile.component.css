@@ -1,0 +1,51 @@
+.profile-button {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    width: 18rem;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-description {
+    padding: 20px;
+}
+
+.btn-warning,
+.btn-success {
+    width: 100%;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-warning:hover,
+.btn-success:hover {
+    filter: brightness(90%);
+}
