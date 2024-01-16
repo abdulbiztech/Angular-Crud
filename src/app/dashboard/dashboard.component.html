@@ -1,72 +1,58 @@
-<!-- <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand">DEMO APP</a>
-        <form class="d-flex">
-            <a class="navbar-brand">Home</a>
-
-            <a class="navbar-brand">About us</a>
-
-            <a class="navbar-brand">Jobs</a>
-
-            <a class="navbar-brand">Clients</a>
-
-            <a class="navbar-brand">Employers</a>
-
-            <a class="navbar-brand">Contact us</a>
-
-
-        </form>
-    </div>
-
-
-</nav> -->
 <app-navbar />
-<button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Register
-</button>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Employee Detail</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form [formGroup]="FormValue" (ngSubmit)="submitEmployee()">
-                    <div class="mb-3">
-                        <label class="form-label">Photo</label>
-                        <input type="file" (change)="onFileSelected($event)" class="form-control"
-                            formControlName="image" />
-                        <img [src]="imageUrl" alt="Selected Image" class="img-preview" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Firstname</label>
-                        <input type="text" class="form-control" formControlName="firstname" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Lastname</label>
-                        <input type="text" class="form-control" formControlName="lastname" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" formControlName="email" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Mobile</label>
-                        <input type="text" class="form-control" formControlName="mobile" />
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Salary</label>
-                        <input type="text" class="form-control" formControlName="salary" />
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+<div class="container">
+    <div class="buttonbox">
+        <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Register
+        </button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="FormValue" (ngSubmit)="submitEmployee()">
+                        <div class="mb-3">
+                            <label class="form-label">Photo</label>
+                            <input type="file" (change)="onFileSelected($event)" class="form-control"
+                                formControlName="image" />
+                            <img [src]="imageUrl" alt="Selected Image" class="img-preview" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Firstname</label>
+                            <input type="text" class="form-control" formControlName="firstname" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Lastname</label>
+                            <input type="text" class="form-control" formControlName="lastname" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" formControlName="email" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mobile</label>
+                            <input type="text" class="form-control" formControlName="mobile" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">About</label>
+                            <input type="text" class="form-control" formControlName="about" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Age</label>
+                            <input type="text" class="form-control" formControlName="age" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

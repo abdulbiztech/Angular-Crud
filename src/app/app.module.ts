@@ -8,7 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ToastrModule } from 'ngx-toastr';
@@ -20,7 +19,6 @@ import { NavbarComponent } from './navbar/navbar.component';
     EmployeeDashboardComponent,
     ProfileComponent,
     DashboardComponent,
-    LoginComponent,
     NavbarComponent,
   ],
   imports: [

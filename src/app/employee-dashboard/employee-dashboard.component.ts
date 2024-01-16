@@ -27,77 +27,72 @@ export class EmployeeDashboardComponent implements OnInit {
       mobile: [''],
       salary: [''],
     });
-    this.getAllEmployee();
+    // this.getAllEmployee();
   }
-  clickAddEmployee() {
-    this.FormValue.reset();
-    this.showAdd = true;
-    this.showUpdate = false;
-  }
-  postEmployee() {
-    this.employeeObj.firstname = this.FormValue.value.firstname;
-    this.employeeObj.lastname = this.FormValue.value.lastname;
-    this.employeeObj.email = this.FormValue.value.email;
-    this.employeeObj.mobile = this.FormValue.value.mobile;
-    this.employeeObj.salary = this.FormValue.value.salary;
-    this.api.postEmployee(this.employeeObj).subscribe(
-      (res) => {
-        console.log('res', res);
-        alert('Emplyee Added Successfully!');
-        this.router.navigate(['/']);
-        this.getAllEmployee();
-        let ref = document.getElementById('cancel');
-        ref?.click();
-        this.FormValue.reset();
-      },
-      (err) => {
-        alert('Something Went Wrong');
-      }
-    );
-  }
-  getAllEmployee() {
-    this.api.getEmployee().subscribe((res) => {
-      console.log('getting data', res);
-      this.emplyeeData = res;
-    });
-  }
-  deleteEmployee(id: any) {
-    this.api.deleteEmployee(id).subscribe((res) => {
-      alert('Employee Deleted successfully');
-      this.getAllEmployee();
-    });
-  }
-  editEmployee(item: any) {
-    this.showAdd = true;
-    this.showUpdate = false;
-    this.employeeObj.id = item.id;
-    this.FormValue.setValue({
-      firstname: item.firstname,
-      lastname: item.lastname,
-      email: item.email,
-      mobile: item.mobile,
-      salary: item.salary,
-    });
-    // this.FormValue.controls['firstname'].setValue(item.firstname);
-    // this.FormValue.controls['lastname'].setValue(item.lastname);
-    // this.FormValue.controls['email'].setValue(item.email);
-    // this.FormValue.controls['mobile'].setValue(item.mobile);
-    // this.FormValue.controls['salary'].setValue(item.salary);
-  }
-  updateEmployee() {
-    this.employeeObj.firstname = this.FormValue.value.firstname;
-    this.employeeObj.lastname = this.FormValue.value.lastname;
-    this.employeeObj.email = this.FormValue.value.email;
-    this.employeeObj.mobile = this.FormValue.value.mobile;
-    this.employeeObj.salary = this.FormValue.value.salary;
-    this.api
-      .updateEmployee(this.employeeObj, this.employeeObj.id)
-      .subscribe((res: any) => {
-        alert('Updated Successfulllly!');
-        let ref = document.getElementById('cancel');
-        ref?.click();
-        this.FormValue.reset();
-        this.getAllEmployee();
-      });
-  }
+  // clickAddEmployee() {
+  //   this.FormValue.reset();
+  //   this.showAdd = true;
+  //   this.showUpdate = false;
+  // }
+  // postEmployee() {
+  //   this.employeeObj.firstname = this.FormValue.value.firstname;
+  //   this.employeeObj.lastname = this.FormValue.value.lastname;
+  //   this.employeeObj.email = this.FormValue.value.email;
+  //   this.employeeObj.mobile = this.FormValue.value.mobile;
+  //   this.employeeObj.salary = this.FormValue.value.salary;
+  //   this.api.postEmployee(this.employeeObj).subscribe(
+  //     (res) => {
+  //       console.log('res', res);
+  //       alert('Emplyee Added Successfully!');
+  //       this.router.navigate(['/']);
+  //       this.getAllEmployee();
+  //       let ref = document.getElementById('cancel');
+  //       ref?.click();
+  //       this.FormValue.reset();
+  //     },
+  //     (err) => {
+  //       alert('Something Went Wrong');
+  //     }
+  //   );
+  // }
+  // getAllEmployee() {
+  //   this.api.getEmployee().subscribe((res) => {
+  //     console.log('getting data', res);
+  //     this.emplyeeData = res;
+  //   });
+  // }
+  // deleteEmployee(id: any) {
+  //   this.api.deleteEmployee(id).subscribe((res) => {
+  //     alert('Employee Deleted successfully');
+  //     this.getAllEmployee();
+  //   });
+  // }
+  // editEmployee(item: any) {
+  //   this.showAdd = true;
+  //   this.showUpdate = false;
+  //   this.employeeObj.id = item.id;
+  //   this.FormValue.setValue({
+  //     firstname: item.firstname,
+  //     lastname: item.lastname,
+  //     email: item.email,
+  //     mobile: item.mobile,
+  //     salary: item.salary,
+  //   });
+  // }
+  // updateEmployee() {
+  //   this.employeeObj.firstname = this.FormValue.value.firstname;
+  //   this.employeeObj.lastname = this.FormValue.value.lastname;
+  //   this.employeeObj.email = this.FormValue.value.email;
+  //   this.employeeObj.mobile = this.FormValue.value.mobile;
+  //   this.employeeObj.salary = this.FormValue.value.salary;
+  //   this.api
+  //     .updateEmployee(this.employeeObj, this.employeeObj.id)
+  //     .subscribe((res: any) => {
+  //       alert('Updated Successfulllly!');
+  //       let ref = document.getElementById('cancel');
+  //       ref?.click();
+  //       this.FormValue.reset();
+  //       this.getAllEmployee();
+  //     });
+  // }
 }
