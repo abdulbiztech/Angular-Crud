@@ -1,73 +1,83 @@
-<app-navbar />
-<!--
-<div class="main-box">
-    <div class="card">
-        <img src="https://plus.unsplash.com/premium_photo-1673816569041-67946f47ccd3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8fA%3D%3D"
-            class="card-img-top" alt="...">
-
-        <div class="profile-button">
-            <button type="button" class="btn btn-warning">Edit Photo</button>
-        </div>
-
+<nav class="navbar navbar-expand-lg cus-navbar">
+  <div class="container">
+    <a class="navbar-brand cus-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="25"
+        fill="#fff"
+        class="bi bi-list"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+        />
+      </svg>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">About us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Clients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Employers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Contact us</a>
+        </li>
+      </ul>
     </div>
-    <div class="card-description">
-        <p>Welcome {{profileData[0]?.firstname}}
-        </p>
-        <button class="btn btn-success"> I Agree</button>
-    </div>
-</div> -->
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="profile-box">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <div class="profile-img">
-
-                            <img src="https://plus.unsplash.com/premium_photo-1673816569041-67946f47ccd3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8fA%3D%3D"
-                                alt="...">
-
-                        </div>
-                        <div class="profile-button">
-                            <button type="button" class="btn btn-warning">Edit Photo</button>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <p>Welcome {{profileData[0]?.firstname}}
-
-                        </p>
-                        <p>{{profileData[0]?.about}}</p>
-                        <button class="btn btn-success"> I Agree</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div> -->
+  </div>
+</nav>
 
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="profile-box">
-                <div class="row">
-                    <div class="col-12 col-md-6">
-                        <div class="profile-img">
-                            <img src="https://plus.unsplash.com/premium_photo-1673816569041-67946f47ccd3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8fA%3D%3D"
-                                alt="...">
-                        </div>
-                        <div class="profile-button">
-                            <button type="button" class="btn btn-warning">Edit Photo</button>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <p>Welcome {{profileData[4]?.firstname}}</p>
-                        <p>{{profileData[4]?.about}}</p>
-                        <button class="btn btn-success"> I Agree</button>
-                    </div>
-                </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="profile-box">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="profile-img">
+              <img [src]="this.profileData?.image" alt="..." />
             </div>
+            <div class="profile-button">
+              <button type="button" class="btn btn-warning">Edit Photo</button>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <p>
+              I'm {{ this.profileData?.firstname }}
+              {{ this.profileData?.lastname }} and I am above
+              {{ this.profileData?.age }} years and you can send your mails to
+              {{ this.profileData?.email }}. I live in
+              {{ this.profileData?.country }} state of
+              {{ this.profileData?.state }}. I like to Play
+              {{ this.profileData?.tags }} and reading book. And please send me
+              newslatters.Please reach out to me my mobile
+              {{ this.profileData?.mobile }}.
+            </p>
+            <button class="btn btn-success">I Agree</button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

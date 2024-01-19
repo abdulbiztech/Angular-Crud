@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { filter } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../Services/api.service';
@@ -13,7 +13,7 @@ import { ApiService } from '../Services/api.service';
 })
 export class DashboardComponent implements OnInit {
   FormValue!: FormGroup;
-
+  employeeId: any;
   imageUrl: (string | ArrayBuffer | null) | undefined;
   isRouting: boolean = false;
   constructor(
@@ -26,13 +26,17 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.FormValue = this.fb.group({
-      image: [],
-      firstname: [''],
-      lastname: [''],
-      email: [''],
-      mobile: [''],
-      about: [''],
-      age: [''],
+      image: ['', Validators.required], // Add validators for required
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]], // Add email validator
+      mobile: ['', Validators.required],
+      age: ['', Validators.required],
+      state: ['', Validators.required],
+      country: ['', Validators.required],
+      address: ['', Validators.required],
+      tags: [[]],
+      checkbox: [false, Validators.required],
     });
 
     this.router.events
@@ -50,9 +54,12 @@ export class DashboardComponent implements OnInit {
         }
       });
   }
-
+  homepage() {
+    this.router.navigate(['/']);
+  }
   onFileSelected(event: any): void {
     const file = event.target.files[0];
+    // console.log('Age value:', this.FormValue.get('age')?.value);
 
     if (file) {
       const reader = new FileReader();
@@ -65,7 +72,14 @@ export class DashboardComponent implements OnInit {
       image: file,
     });
   }
+
   submitEmployee() {
+    if (this.FormValue.invalid) {
+      this.markFormGroupTouched(this.FormValue);
+      this.toastr.error('Please fill in all required fields.', 'Error');
+      return;
+    }
+
     const imageFile = this.FormValue.get('image')?.value;
 
     if (!imageFile) {
@@ -87,14 +101,34 @@ export class DashboardComponent implements OnInit {
 
         console.log('Submitted Form Values:', formData);
 
-        this.api.registration(formData).subscribe((res) => {
-          console.log(res);
-        });
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          formData.image = e.target?.result;
+          this.api.registration(formData).subscribe((res) => {
+            console.log('API Response:', res.image);
+            // console.log('    this.employeeId', this.employeeId);
+
+            // this.employeeId = res.id;
+          });
+        };
+        reader.readAsDataURL(imageFile);
 
         this.FormValue.reset();
+        this.FormValue.markAsPristine();
+        this.FormValue.markAsUntouched();
         this.toastr.success('Registration Successful');
         this.router.navigate(['/profile']);
       }
     };
+  }
+
+  markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach((control) => {
+      control.markAsTouched();
+
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 }

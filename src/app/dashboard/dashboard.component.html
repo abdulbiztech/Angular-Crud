@@ -1,59 +1,364 @@
-<app-navbar />
-<div class="container">
-    <div class="buttonbox">
-        <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Register
+<div class="mainbox">
+  <nav class="navbar navbar-expand-lg cus-navbar">
+    <div class="container">
+      <a class="navbar-brand cus-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="#fff"
+          class="bi bi-list"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          />
+        </svg>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Clients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Employers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Contact us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="banner-box">
+    <div class="form-box">
+      <h1>I'm looking for...</h1>
+      <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success d-flex align-items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="15"
+            height="15"
+            fill="#fff"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+            />
+          </svg>
+          Search
         </button>
+      </form>
+
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox1"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox1">Full time</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox2"
+          value="option2"
+        />
+        <label class="form-check-label" for="inlineCheckbox2"
+          >Part time / Casual / Freelance</label
+        >
+      </div>
+
+      <div class="text-center my-4">
+        <button
+          class="btn btn-success"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Register
+        </button>
+      </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        data-bs-backdrop="static" data-bs-keyboard="false">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+</div>
+
+<div class="head-box">
+  <div class="container">
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="FormValue" (ngSubmit)="submitEmployee()">
+              <div class="mb-3">
+                <label class="form-label">Photo</label>
+                <input
+                  type="file"
+                  (change)="onFileSelected($event)"
+                  class="form-control"
+                  formControlName="image"
+                />
+                <img [src]="imageUrl" alt="Image" class="img-preview" />
+                <div
+                  *ngIf="
+                    FormValue.get('image')?.hasError('required') &&
+                    FormValue.get('image')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  Image is required
                 </div>
-                <div class="modal-body">
-                    <form [formGroup]="FormValue" (ngSubmit)="submitEmployee()">
-                        <div class="mb-3">
-                            <label class="form-label">Photo</label>
-                            <input type="file" (change)="onFileSelected($event)" class="form-control"
-                                formControlName="image" />
-                            <img [src]="imageUrl" alt="Selected Image" class="img-preview" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Firstname</label>
-                            <input type="text" class="form-control" formControlName="firstname" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Lastname</label>
-                            <input type="text" class="form-control" formControlName="lastname" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" formControlName="email" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Mobile</label>
-                            <input type="text" class="form-control" formControlName="mobile" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">About</label>
-                            <input type="text" class="form-control" formControlName="about" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Age</label>
-                            <input type="text" class="form-control" formControlName="age" />
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Close
-                            </button>
-                            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Firstname</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="firstname"
+                />
+                <div
+                  *ngIf="
+                    FormValue.get('firstname')?.hasError('required') &&
+                    FormValue.get('firstname')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  Firstname is required
                 </div>
-            </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Lastname</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="lastname"
+                />
+                <div
+                  *ngIf="
+                    FormValue.get('lastname')?.hasError('required') &&
+                    FormValue.get('lastname')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  Lastname is required
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                />
+                <div
+                  *ngIf="
+                    FormValue.get('email')?.hasError('required') &&
+                    FormValue.get('email')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  Email is required
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Mobile</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="mobile"
+                />
+                <div
+                  *ngIf="
+                    FormValue.get('mobile')?.hasError('required') &&
+                    FormValue.get('mobile')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  Mobile is required
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="20"
+                  max="60"
+                  step="1"
+                  formControlName="age"
+                  [value]="FormValue.get('age')?.value"
+                  readonly
+                />
+                <div
+                  *ngIf="
+                    FormValue.get('age')?.hasError('required') &&
+                    FormValue.get('age')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  Age is required
+                </div>
+                <span>{{ FormValue.get("age")?.value | json }}</span>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">State</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="state"
+                />
+                <div
+                  *ngIf="
+                    FormValue.get('state')?.hasError('required') &&
+                    FormValue.get('state')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  State is required
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Country</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="country"
+                />
+                <div
+                  *ngIf="
+                    FormValue.get('country')?.hasError('required') &&
+                    FormValue.get('country')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  Country is required
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Address</label>
+                <textarea
+                  class="form-control"
+                  formControlName="address"
+                ></textarea>
+                <div
+                  *ngIf="
+                    FormValue.get('address')?.hasError('required') &&
+                    FormValue.get('address')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  Address is required
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Tags</label>
+                <select class="form-control" formControlName="tags" multiple>
+                  <div
+                    *ngIf="
+                      FormValue.get('tags')?.hasError('required') &&
+                      FormValue.get('tags')?.touched
+                    "
+                    class="errorMessage"
+                  >
+                    tags is required
+                  </div>
+                  <option value="tag1">Developer</option>
+                  <option value="tag2">Tester</option>
+                </select>
+              </div>
+              <div class="mb-3 form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="exampleCheck1"
+                  formControlName="checkbox"
+                />
+                <div
+                  *ngIf="
+                    FormValue.get('checkbox')?.hasError('required') &&
+                    FormValue.get('checkbox')?.touched
+                  "
+                  class="errorMessage"
+                >
+                  checkbox is required
+                </div>
+                <label class="form-check-label text-dark" for="exampleCheck1">
+                  Check me out
+                </label>
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  id="cancel"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  data-bs-dismiss="modal"
+                  class="btn btn-primary"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
