@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   constructor(private http: HttpClient) {}
-
+  //There are multiple service like get, post etc.
   postEmployee(data: any) {
     return this.http.post('http://localhost:3000/posts', data).pipe(
       map((res: any) => {
